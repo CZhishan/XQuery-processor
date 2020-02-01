@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3c2e185d-c614-420d-b998-f49d54b29ba8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Wzf39ze8abzfuVOnmJzk8oPuL6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="E:/ProgramData/Javalib/antlr-4.8-complete.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\CHEN Zhishan\Documents\20winter\database\project1\src" />
+      <recent name="E:\CHEN Zhishan\Documents\20winter\database\project1\gen" />
+      <recent name="E:\CHEN Zhishan\Documents\20winter\database\project1" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.project1">
+    <configuration name="project1" type="Application" factoryName="Application">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="project1" />
+      <shortenClasspath name="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="antlr-4.8-complete.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="E:/ProgramData/Javalib/antlr-4.8-complete.jar/" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.project1" />
+      <item itemvalue="JAR Application.antlr-4.8-complete.jar" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.antlr-4.8-complete.jar" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3c2e185d-c614-420d-b998-f49d54b29ba8" name="Default Changelist" comment="" />
+      <created>1580157142380</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580157142380</updated>
+      <workItem from="1580157146228" duration="1231000" />
+      <workItem from="1580162163513" duration="4851000" />
+      <workItem from="1580236654723" duration="27489000" />
+      <workItem from="1580322071509" duration="21896000" />
+      <workItem from="1580581931723" duration="3951000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Project_Structure" timestamp="1580164797089">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1580164797089" />
+    <state x="71" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580330113330">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="71" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1580330113330" />
+    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580323561577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1580323561577" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1580323546955">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1580323546955" />
+    <state width="1237" height="127" key="GridCell.Tab.0.bottom" timestamp="1580584292536">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="127" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1580584292536" />
+    <state width="1237" height="127" key="GridCell.Tab.0.center" timestamp="1580584292536">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="127" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1580584292536" />
+    <state width="1237" height="127" key="GridCell.Tab.0.left" timestamp="1580584292536">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="127" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1580584292536" />
+    <state width="1237" height="127" key="GridCell.Tab.0.right" timestamp="1580584292536">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="127" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1580584292536" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1580329642278">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1580329642278" />
+    <state x="329" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1580162300408">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="329" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1580162300408" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1580326431723">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1580326431723" />
+  </component>
+</project>

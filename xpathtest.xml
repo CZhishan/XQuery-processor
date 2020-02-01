@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<root>
+    <foods>
+        <fruit id="1">Apple</fruit>
+        <vegetable id="2">Cabbage</vegetable>
+        <fruit id="3">Pineapple</fruit>
+    </foods>
+    <foods>
+
+    </foods>
+    <foods>
+        <fruit id="1">Watermelon</fruit>
+    </foods>
+    <colors>
+        <color id="4">Blue</color>
+        <color id="5">Yellow</color>
+        <color id="6">Orange</color>
+    </colors>
+</root>
