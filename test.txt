@@ -1,1 +1,1 @@
-doc("xpathtest.xml")//colors//text()
+doc("xpathtest.xml")/root/foods//fruit
