@@ -11,6 +11,10 @@ public class myXPathVisitor extends XPathBaseVisitor<LinkedList> {
     private LinkedList<Node> curNodes = new LinkedList<>();
     Document xmldoc = null;
 
+    public void setCurrentNodes(LinkedList<Node> Nodes){
+        curNodes = Nodes;
+    }
+
     public LinkedList<Node> getChildren(LinkedList<Node> node) {
         LinkedList<Node> children = new LinkedList<>();
         for (Node n : node) {
@@ -32,7 +36,7 @@ public class myXPathVisitor extends XPathBaseVisitor<LinkedList> {
         return parents;
     }
 
-    public LinkedList<Node> getDescendants(LinkedList<Node> node) {
+    public static LinkedList<Node> getDescendants(LinkedList<Node> node) {
         LinkedList<Node> descendts = new LinkedList<>();
         for (Node n: node) {
             if (n.getChildNodes().getLength() != 0) {
@@ -44,7 +48,7 @@ public class myXPathVisitor extends XPathBaseVisitor<LinkedList> {
         return descendts;
     }
 
-    public LinkedList<Node> findalldescendts(Node n) {
+    public static LinkedList<Node> findalldescendts(Node n) {
         LinkedList<Node> alldesc = new LinkedList<>();
         for (int i = 0; i < n.getChildNodes().getLength(); i++) {
             alldesc.addAll(findalldescendts(n.getChildNodes().item(i)));
