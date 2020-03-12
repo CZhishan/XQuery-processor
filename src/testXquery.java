@@ -13,8 +13,7 @@ public class testXquery {
         CharStream input = null;
         try{
             String buffer = "";
-            BufferedReader br = new BufferedReader(new FileReader("testxq.txt"));
-            StringBuilder sb = new StringBuilder();
+            BufferedReader br = new BufferedReader(new FileReader("testjoin.txt"));
             String line = br.readLine();
             while (line != null) {
                 buffer += line + ' ';
@@ -39,11 +38,34 @@ public class testXquery {
                 System.out.println(results.size());
                 finalResult = testXPath.makeElem(visitor.outputDoc, "result", results);
             }
-            testXPath.writeToFile(visitor.outputDoc, finalResult, "output/XQueryresult.xml");
+            testXPath.writeToFile(visitor.outputDoc, finalResult, "output/joinresult.xml");
 
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error: " + e.getMessage());
         }
     }
+
+    public static LinkedList evalRewrited(String rewrited) {
+        CharStream input = null;
+        try {
+            input = CharStreams.fromString(rewrited);
+            XQueryLexer lexer = new XQueryLexer(input);
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            XQueryParser parser = new XQueryParser(tokens);
+            ParseTree tree = parser.xq();
+
+            myXQueryVisitor visitor = new myXQueryVisitor();
+            visitor.reFlag = false;
+            LinkedList<Node> results = visitor.visit(tree);
+            return results;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error: " + e.getMessage());
+        }
+        return null;
+
+    }
 }
+

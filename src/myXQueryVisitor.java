@@ -11,6 +11,7 @@ public class myXQueryVisitor extends XQueryBaseVisitor<LinkedList> {
     private Stack<HashMap<String, LinkedList<Node>>> contextStack = new Stack<>();
     Document outputDoc = null;
     private Document doc = null;
+    boolean reFlag = true;
 
     public myXQueryVisitor(){
         try {
@@ -38,6 +39,82 @@ public class myXQueryVisitor extends XQueryBaseVisitor<LinkedList> {
     private Node makeText(String s){
         Node newText = doc.createTextNode(s);
         return newText;
+    }
+
+    public static LinkedList<Node> nodeChildren(Node curNode){
+        LinkedList<Node> childrenList = new LinkedList<>();
+        for (int i = 0; i < curNode.getChildNodes().getLength(); i++) {
+            childrenList.add(curNode.getChildNodes().item(i));
+        }
+        return childrenList;
+    }
+
+    private HashMap joinLeft(LinkedList<Node> tupleList, String [] hashAtts){
+        HashMap<String, LinkedList<Node>> results = new HashMap<>();
+        for (Node tuple: tupleList){
+            LinkedList<Node> children = nodeChildren(tuple);
+            String key = "";
+            for (String hashAtt: hashAtts) {
+                for (Node child: children){
+                    if (hashAtt.equals(child.getNodeName()))
+                        key += child.getFirstChild().getTextContent();
+                }
+            }
+            if (results.containsKey(key))
+                results.get(key).add(tuple);
+            else{
+                LinkedList<Node> value = new LinkedList<>();
+                value.add(tuple);
+                results.put(key, value);
+            }
+        }
+        return results;
+    }
+
+    private LinkedList<Node> joinRight(HashMap<String, LinkedList<Node>> hashMapOnLeft, LinkedList<Node> right, String [] attrRight){
+        LinkedList<Node> results = new LinkedList<>();
+        for (Node tuple: right){
+            LinkedList<Node> children = nodeChildren(tuple);
+            String key = "";
+            for (String hashAtt: attrRight) {
+                for (Node child: children){
+                    if (hashAtt.equals(child.getNodeName())) {
+                        key += child.getFirstChild().getTextContent();
+                    }
+                }
+            }
+
+            if (hashMapOnLeft.containsKey(key))
+                results.addAll(product(hashMapOnLeft.get(key),tuple));
+        }
+        return results;
+    }
+    private LinkedList<Node> product(LinkedList<Node> leftList, Node right){
+        LinkedList<Node> result = new LinkedList<>();
+        for (Node left: leftList){
+            LinkedList<Node> newTupleChildren = nodeChildren(left);
+            newTupleChildren.addAll(nodeChildren(right));
+            result.add(makeElem("tuple", newTupleChildren));
+        }
+        return result;
+    }
+
+    @Override public LinkedList<Node> visitJoin_clause(XQueryParser.Join_clauseContext ctx) { return visitChildren(ctx); }
+
+    @Override public LinkedList<Node> visitJoinClause(XQueryParser.JoinClauseContext ctx) {
+        LinkedList<Node> left = visit(ctx.xq(0));
+        LinkedList<Node> right = visit(ctx.xq(1));
+        int idSize = ctx.attrPair(0).ID().size();
+        String [] attrLeft = new String [idSize];
+        String [] attrRight = new String [idSize];
+        for (int i = 0; i < idSize; i++){
+            attrLeft[i] = ctx.attrPair(0).ID(i).getText();
+            attrRight[i] = ctx.attrPair(1).ID(i).getText();
+        }
+        HashMap<String, LinkedList<Node>> hashMapOnLeft = joinLeft(left, attrLeft);
+        LinkedList<Node> result = joinRight(hashMapOnLeft, right, attrRight);
+
+        return result;
     }
 
     @Override public LinkedList<Node> visitLet_clause(XQueryParser.Let_clauseContext ctx) {
@@ -145,9 +222,22 @@ public class myXQueryVisitor extends XQueryBaseVisitor<LinkedList> {
 
         HashMap<String, LinkedList<Node>> old_ctx = new HashMap<>(contextMap);
         contextStack.push(old_ctx);
-        FLWR_helper(0, results, ctx);
-        contextMap = contextStack.pop();
 
+        if (!reFlag || ctx.forClause().xq(0).getText().startsWith("join")){
+            FLWR_helper(0, results, ctx);
+        }
+        else{
+            Rewriter re = new Rewriter();
+            String rewrited = re.Rewriting(ctx);
+            if (rewrited  == ""){
+                FLWR_helper(0, results, ctx);
+            }
+            else {
+                results = testXquery.evalRewrited(rewrited);
+            }
+        }
+
+        contextMap = contextStack.pop();
         return results;
     }
 
@@ -198,8 +288,27 @@ public class myXQueryVisitor extends XQueryBaseVisitor<LinkedList> {
         return visit(ctx.cond());
     }
 
+
     @Override public LinkedList<Node> visitReturnClause(XQueryParser.ReturnClauseContext ctx) {
-        return visit(ctx.xq());
+        return visit(ctx.rt());
+    }
+
+    @Override public LinkedList<Node> visitXq_return(XQueryParser.Xq_returnContext ctx) { return visit(ctx.xq()); }
+
+    @Override public LinkedList<Node> visitTag_return(XQueryParser.Tag_returnContext ctx) {
+        String tagName = ctx.startTag().tagName().getText();
+        LinkedList<Node> nodeList = visit(ctx.rt());
+        Node node = makeElem(tagName, nodeList);
+        LinkedList<Node> results = new  LinkedList<>();
+        results.add(node);
+        return results;
+
+    }
+
+    @Override public LinkedList<Node> visitComma_return(XQueryParser.Comma_returnContext ctx) {
+        LinkedList<Node> results = visit(ctx.rt(0));
+        results.addAll(visit(ctx.rt(1)));
+        return results;
     }
 
     @Override public LinkedList<Node> visitIs_cond(XQueryParser.Is_condContext ctx) {
@@ -270,7 +379,8 @@ public class myXQueryVisitor extends XQueryBaseVisitor<LinkedList> {
                 HashMap<String, LinkedList<Node>> old_ctx = new HashMap<>(contextMap);
                 contextStack.push(old_ctx);
 
-                LinkedList<Node> value = new LinkedList<>(); value.add(node);
+                LinkedList<Node> value = new LinkedList<>();
+                value.add(node);
                 contextMap.put(key, value);
                 if (k+1 <= numFor)
                     if (satisfy_helper(k+1, ctx)) {

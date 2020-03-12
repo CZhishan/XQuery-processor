@@ -66,6 +66,13 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariable(XQueryParser.VariableContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code join_clause}
+	 * labeled alternative in {@link XQueryParser#xq}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJoin_clause(XQueryParser.Join_clauseContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code single_xq}
 	 * labeled alternative in {@link XQueryParser#xq}.
 	 * @param ctx the parse tree
@@ -79,6 +86,12 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFlwr_clause(XQueryParser.Flwr_clauseContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link XQueryParser#joinClause}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJoinClause(XQueryParser.JoinClauseContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link XQueryParser#forClause}.
 	 * @param ctx the parse tree
@@ -160,6 +173,27 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNot_cond(XQueryParser.Not_condContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code xq_return}
+	 * labeled alternative in {@link XQueryParser#rt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitXq_return(XQueryParser.Xq_returnContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code tag_return}
+	 * labeled alternative in {@link XQueryParser#rt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTag_return(XQueryParser.Tag_returnContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code comma_return}
+	 * labeled alternative in {@link XQueryParser#rt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComma_return(XQueryParser.Comma_returnContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link XQueryParser#startTag}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -177,6 +211,12 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVar(XQueryParser.VarContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link XQueryParser#attrPair}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAttrPair(XQueryParser.AttrPairContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code single_ap}
 	 * labeled alternative in {@link XQueryParser#ap}.
