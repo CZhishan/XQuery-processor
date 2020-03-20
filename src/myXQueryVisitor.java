@@ -12,6 +12,7 @@ public class myXQueryVisitor extends XQueryBaseVisitor<LinkedList> {
     Document outputDoc = null;
     private Document doc = null;
     boolean reFlag = true;
+    String rule = null;
 
     public myXQueryVisitor(){
         try {
@@ -228,8 +229,10 @@ public class myXQueryVisitor extends XQueryBaseVisitor<LinkedList> {
         }
         else{
             Rewriter re = new Rewriter();
-            String rewrited = re.Rewriting(ctx);
-            if (rewrited  == ""){
+            String rewrited = "";
+            rewrited = re.Rewriter(ctx, rule);
+
+            if (rewrited.equals("")){
                 FLWR_helper(0, results, ctx);
             }
             else {

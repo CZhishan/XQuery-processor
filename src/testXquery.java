@@ -13,7 +13,7 @@ public class testXquery {
         CharStream input = null;
         try{
             String buffer = "";
-            BufferedReader br = new BufferedReader(new FileReader("testjoin.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(args[0]));
             String line = br.readLine();
             while (line != null) {
                 buffer += line + ' ';
@@ -28,6 +28,7 @@ public class testXquery {
             ParseTree tree = parser.xq();
 
             myXQueryVisitor visitor = new myXQueryVisitor();
+            visitor.rule = args[1];
             LinkedList<Node> results = visitor.visit(tree);
             LinkedList<Node> finalResult;
             if (results.size() == 1) {
@@ -38,7 +39,7 @@ public class testXquery {
                 System.out.println(results.size());
                 finalResult = testXPath.makeElem(visitor.outputDoc, "result", results);
             }
-            testXPath.writeToFile(visitor.outputDoc, finalResult, "output/joinresult.xml");
+            testXPath.writeToFile(visitor.outputDoc, finalResult, "join_result.xml");
 
         } catch (Exception e) {
             e.printStackTrace();
